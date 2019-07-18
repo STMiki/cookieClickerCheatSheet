@@ -9,7 +9,7 @@ var CheatSheet = {
   },
   init: function() {
     if (document.getElementById('cheatSheet') !== undefined) {
-      document.getElementTagName('head')[0].append("<style>#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}</style>");
+      document.getElementsTagName('head')[0].append("<style>#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}</style>");
       // $('head').append("<style>#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}</style>");
       var data = document.createElement('div');
       data.id = "cheatSheet";
