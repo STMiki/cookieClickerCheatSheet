@@ -5,6 +5,7 @@ Nothing to serious, just go to [cookie clicker](https://orteil.dashnet.org/cooki
 And copy/past the code in `src/main.js`
 
 You will see something like this pop in your Store :
+
 ![alt text](https://github.com/STMiki/cookieClickerCheatSheet/blob/master/img0.png "Cheat Sheet")
 
 Enjoy !
