@@ -9,8 +9,9 @@ var CheatSheet = {
   },
   init: function() {
     if (document.getElementById('cheatSheet') !== undefined) {
-      document.getElementsByTagName('head')[0].append("<style>#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}</style>");
-      // $('head').append("<style>#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}</style>");
+      var style = document.createElement('style');
+      style.innerHTML = "#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}";
+      document.getElementsByTagName('head')[0].appendChild(style);
       var data = document.createElement('div');
       data.id = "cheatSheet";
       data.classList.add('storeSection');
