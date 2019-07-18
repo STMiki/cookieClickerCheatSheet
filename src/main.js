@@ -228,7 +228,7 @@ var CheatSheet = {
               if (CheatSheet.autoClickGolden.active && (shimmer.wrath === undefined || shimmer.wrath == 0)) {
                 shimmer.l.click();
                 CheatSheet.autoClickGolden.clickedCookie += 1;
-              } else if ((shimmer.wrath !== undefined || shimmer.wrath != 0) && CheatSheet.autoClickWrath.active) {
+              } else if ((shimmer.wrath !== undefined && shimmer.wrath != 0) && CheatSheet.autoClickWrath.active) {
                 shimmer.l.click();
                 CheatSheet.autoClickWrath.clickedCookie += 1;
               }
