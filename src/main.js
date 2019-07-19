@@ -46,7 +46,7 @@ var CheatSheet = {
       data.run = function() {
         if (CheatSheet.autoClicker.active) {
           document.getElementById('bigCookie').click();
-          CheatSheet.autoClicker.clickedCookie += 1;
+          CheatSheet.autoClicker.clickedCookie += Game.computedMouseCps;
         }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
