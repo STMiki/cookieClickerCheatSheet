@@ -1,28 +1,53 @@
 var CheatSheet = {
+  RegsiterElement: function(element) {
+    if (this.elements === undefined)
+      this.elements = [];
+    this.elements.push(element);
+  },
+  RemoveCheatEngine: function() {
+    CheatSheet.RegsiterElement.elements.forEach((element) => {
+      document.getElementById(element).remove();
+    });
+    Game.prompt("Goodbye", [":("]);
+    clearInterval(CheatSheet.intervalLoop);
+    delete CheatSheet;
+  },
   CreateCheatElement: function(id, backPos) {
     var data = document.createElement('div');
     data.classList.add('crate');
     data.classList.add('upgrade');
     data.style.backgroundPosition = backPos;
     data.id = id;
+    CheatSheet.RegsiterElement(id);
     return (data);
   },
   init: function() {
-    if (document.getElementById('cheatSheet') !== undefined) {
+    if (document.getElementById('cheatSheet')       !== undefined) {
       var style = document.createElement('style');
+      style.id = "styleCheatSheet";
+      CheatSheet.RegsiterElement(style.id);
       style.innerHTML = "#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}";
       document.getElementsByTagName('head')[0].appendChild(style);
       var data = document.createElement('div');
       data.id = "cheatSheet";
+      CheatSheet.RegsiterElement(data.id);
       data.classList.add('storeSection');
       document.getElementById('store').insertBefore(data, document.getElementById('products'));
+      CheatSheet.intervalLoop = setInterval(CheatSheet.loop, 1)
+      Game.Prompt("Hello, Thanks for using this Cheat sheet !<br>Nothing too serious here,<br>just autoclicker stuff ;)<br>(I changed the loop thing, if you get any performance issue, <a href=\"https://github.com/STMiki/cookieClickerCheatSheet/issues/new\" target=\"_blank\">report it here</a> pls !)<br>Enjoy !", ["Ok"]);
     }
-    if (document.getElementById('autoClicker') !== undefined) {
+    if (document.getElementById('autoClicker')      !== undefined) {
       var data = {};
       data.id = 'autoClicker';
       data.backPos = {
         x: "-576px",
         y: "-912px"
+      };
+      data.run = function() {
+        if (CheatSheet.autoClicker.active) {
+          document.getElementById('bigCookie').click();
+          CheatSheet.autoClicker.clickedCookie += 1;
+        }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
@@ -50,12 +75,18 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
-    if (document.getElementById('autoClickWrath') !== undefined) {
+    if (document.getElementById('autoClickWrath')   !== undefined) {
       var data = {};
       data.id = 'autoClickWrath';
       data.backPos = {
         x: "0px",
         y: "-768px"
+      };
+      data.run = function(shimmer) {
+        if ((shimmer.wrath !== undefined && shimmer.wrath != 0) && CheatSheet.autoClickWrath.active) {
+          shimmer.l.click();
+          CheatSheet.autoClickWrath.clickedCookie += 1;
+        }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
@@ -83,12 +114,18 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
-    if (document.getElementById('autoClickGolden') !== undefined) {
+    if (document.getElementById('autoClickGolden')  !== undefined) {
       var data = {};
       data.id = 'autoClickGolden';
       data.backPos = {
         x: "0px",
         y: "-672px"
+      };
+      data.run = function(shimmer) {
+        if (CheatSheet.autoClickGolden.active && (shimmer.wrath === undefined || shimmer.wrath == 0)) {
+          shimmer.l.click();
+          CheatSheet.autoClickGolden.clickedCookie += 1;
+        }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
@@ -116,12 +153,21 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
-    if (document.getElementById('autoBuyTech') !== undefined) {
+    if (document.getElementById('autoBuyTech')      !== undefined) {
       var data = {};
       data.id = 'autoBuyTech';
       data.backPos = {
         x: "-528px",
         y: "-1008px"
+      };
+      data.run = function() {
+        var techUpgrades = document.getElementById('techUpgrades').children; // buy tech upgrades
+        for (var i = 0; i < techUpgrades.length && CheatSheet.autoBuyTech.active; i += 1) {
+          if (techUpgrades[i].classList.contains("enabled")) {
+            techUpgrades[i].click();
+            CheatSheet.autoBuyTech.clickedCookie += 1;
+          }
+        }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
@@ -149,12 +195,21 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
-    if (document.getElementById('autoBuyUpgrade') !== undefined) {
+    if (document.getElementById('autoBuyUpgrade')   !== undefined) {
       var data = {};
       data.id = 'autoBuyUpgrade';
       data.backPos = {
         x: "-528px",
         y: "-1104px"
+      };
+      data.run = function() {
+        var upgrades = document.getElementById('upgrades').children; // buy upgrade
+        for (var i = 0; i < upgrades.length && CheatSheet.autoBuyUpgrade.active; i += 1) {
+          if (upgrades[i].classList.contains("enabled")) {
+            upgrades[i].click();
+            CheatSheet.autoBuyUpgrade.clickedCookie += 1;
+          }
+        }
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
@@ -189,6 +244,12 @@ var CheatSheet = {
         x: "-528px",
         y: "-1056px"
       };
+      data.run = function() {
+        for (var i = Game.ObjectsById.length - 1; CheatSheet.autoBuyBuildings.active && i >= 0; i -= 1) { // Buy buildings
+          Game.ObjectsById[i].buy();
+          CheatSheet.autoBuyBuildings.clickedCookie += 1;
+        }
+      };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
         Game.setOnCrate(this);
@@ -215,48 +276,17 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
-    if (CheatSheet.loop === undefined) {
-      CheatSheet.loop = function() {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            if (CheatSheet.autoClicker.active) {// autoClicker
-              document.getElementById('bigCookie').click();
-              CheatSheet.autoClicker.clickedCookie += 1;
-            }
-
-            Game.shimmers.forEach((shimmer) => {
-              if (CheatSheet.autoClickGolden.active && (shimmer.wrath === undefined || shimmer.wrath == 0)) {
-                shimmer.l.click();
-                CheatSheet.autoClickGolden.clickedCookie += 1;
-              } else if ((shimmer.wrath !== undefined && shimmer.wrath != 0) && CheatSheet.autoClickWrath.active) {
-                shimmer.l.click();
-                CheatSheet.autoClickWrath.clickedCookie += 1;
-              }
-            });
-
-            var techUpgrades = document.getElementById('techUpgrades').children; // buy tech upgrades
-            for (var i = 0; i < techUpgrades.length && CheatSheet.autoBuyTech.active; i += 1) {
-              techUpgrades[i].click();
-              CheatSheet.autoBuyTech.clickedCookie += 1;
-            }
-
-            var upgrades = document.getElementById('upgrades').children; // buy upgrade
-            for (var i = 0; i < upgrades.length && CheatSheet.autoBuyUpgrade.active; i += 1) {
-              upgrades[i].click();
-              CheatSheet.autoBuyUpgrade.clickedCookie += 1;
-            }
-
-            for (var i = Game.ObjectsById.length - 1; CheatSheet.autoBuyBuildings.active && i >= 0; i -= 1) { // Buy buildings
-              Game.ObjectsById[i].buy();
-              CheatSheet.autoBuyBuildings.clickedCookie += 1;
-            }
-            CheatSheet.loop();
-            resolve("toto");
-          }, 1);
-        });
-      }
-      CheatSheet.loop();
-    }
-  }
+  },
+  loop: async function() {
+    CheatSheet.autoClicker.run();
+    Game.shimmers.forEach((shimmer) => {
+      CheatSheet.autoClickGolden.run(shimmer);
+      CheatSheet.autoClickWrath.run(shimmer);
+    });
+    CheatSheet.autoBuyTech.run();
+    CheatSheet.autoBuyUpgrade.run();
+    CheatSheet.autoBuyBuildings.run();
+  },
+  intervalLoop: 0
 };
 CheatSheet.init();
