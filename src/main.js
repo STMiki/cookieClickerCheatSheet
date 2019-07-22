@@ -23,6 +23,11 @@ var CheatSheet = {
   },
   init: function() {
     if (document.getElementById('cheatSheet')       !== undefined) {
+      Game.AscendOld = Game.Ascend;
+      Game.Ascend = function(e) {
+        if (CheatSheet.autoClicker.active) CheatSheet.autoClicker.toggle();
+        Game.AscendOld(e);
+      };
       var style = document.createElement('style');
       style.id = "styleCheatSheet";
       CheatSheet.RegsiterElement(style.id);
