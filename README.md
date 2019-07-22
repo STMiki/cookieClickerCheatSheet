@@ -11,7 +11,7 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     document.getElementById('CheatSheetScript').innerHTML = this.responseText;
-  }
+  } else if (this.readyState == 4) Game.Prompt("Error loading Cheat Sheet, please check your internet connection", ["Ok"]);
 };
 xhttp.open("GET", "https://raw.githubusercontent.com/STMiki/cookieClickerCheatSheet/master/src/main.js", true);
 xhttp.send();
