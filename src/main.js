@@ -75,7 +75,7 @@ var CheatSheet = {
         CheatSheet.autoClicker.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClicker.backPos.x + " " + CheatSheet.autoClicker.backPos.y + ";\"></div><div class=\"name\">Autoclicker [" + (CheatSheet.autoClicker.active == 1 ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">A chinese man is behind every click. You realy need to thank him.</div><div class=\"line\"></div><div class=\"data\">&bull; This autoclicker has a rate of <b>1000</b> per second<br>&bull; It might be a little buggy sometime so if something dosen't work, desactivate it<br>&bull; <b>" + Beautify(CheatSheet.autoClicker.clickedCookie) + "</b> cookies clicked so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClicker.backPos.x + " " + CheatSheet.autoClicker.backPos.y + ";\"></div><div class=\"name\">Autoclicker [" + (CheatSheet.autoClicker.active == 1 ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">A chinese man is behind every click. You realy need to thank him.</div><div class=\"line\"></div><div class=\"data\">&bull; This autoclicker has a rate of <b>1000</b> per second<br>&bull; It might be a little buggy sometimes so if something dosen't work, turn it off<br>&bull; <b>" + Beautify(CheatSheet.autoClicker.clickedCookie) + "</b> cookies clicked so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
@@ -114,7 +114,7 @@ var CheatSheet = {
         CheatSheet.autoClickWrath.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClickWrath.backPos.x + " " + CheatSheet.autoClickWrath.backPos.y + ";\"></div><div class=\"name\">Auto Click Wrath Cookie [" + (CheatSheet.autoClickWrath.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">The elders is sending you some present, but some people don't like them.</div><div class=\"line\"></div><div class=\"data\">&bull; Some elders does not like you, so be carefull !<br>&bull; <b>" + Beautify(CheatSheet.autoClickWrath.clickedCookie) + "</b> wrath cookies clicked so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClickWrath.backPos.x + " " + CheatSheet.autoClickWrath.backPos.y + ";\"></div><div class=\"name\">Auto Click Wrath Cookie [" + (CheatSheet.autoClickWrath.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">The elders is sending you some present, but some people don't like them.</div><div class=\"line\"></div><div class=\"data\">&bull; Some elders does not like you, so be careful !<br>&bull; <b>" + Beautify(CheatSheet.autoClickWrath.clickedCookie) + "</b> wrath cookies clicked so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
@@ -195,7 +195,7 @@ var CheatSheet = {
         CheatSheet.autoBuyTech.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyTech.backPos.x + " " + CheatSheet.autoBuyTech.backPos.y + ";\"></div><div class=\"name\">Auto Buy Tech Upgrade [" + (CheatSheet.autoBuyTech.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Look at your grandma ! She looks beautiful with that extra pair of eyes !</div><div class=\"line\"></div><div class=\"data\">&bull; Take care of your cyber grandma, she can't heal you if she is dead !<br>&bull; <b>" + Beautify(CheatSheet.autoBuyTech.clickedCookie) + "</b> technical upgrade buyed so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyTech.backPos.x + " " + CheatSheet.autoBuyTech.backPos.y + ";\"></div><div class=\"name\">Auto Buy Tech Upgrade [" + (CheatSheet.autoBuyTech.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Look at your grandma ! She looks beautiful with that extra pair of eyes !</div><div class=\"line\"></div><div class=\"data\">&bull; Take care of your cyber grandma, she can't heal you if she is dead !<br>&bull; <b>" + Beautify(CheatSheet.autoBuyTech.clickedCookie) + "</b> technical upgrade bought so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
@@ -237,7 +237,7 @@ var CheatSheet = {
         CheatSheet.autoBuyUpgrade.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyUpgrade.backPos.x + " " + CheatSheet.autoBuyUpgrade.backPos.y + ";\"></div><div class=\"name\">Auto Buy Upgrade [" + (CheatSheet.autoBuyUpgrade.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Summon more cookies.</div><div class=\"line\"></div><div class=\"data\">&bull; How to enlarge your cookie in 5 clicks !<br>&bull; <b>" + Beautify(CheatSheet.autoBuyUpgrade.clickedCookie) + "</b> upgrade buyed so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyUpgrade.backPos.x + " " + CheatSheet.autoBuyUpgrade.backPos.y + ";\"></div><div class=\"name\">Auto Buy Upgrade [" + (CheatSheet.autoBuyUpgrade.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Summon more cookies.</div><div class=\"line\"></div><div class=\"data\">&bull; How to enlarge your cookie in 5 clicks !<br>&bull; <b>" + Beautify(CheatSheet.autoBuyUpgrade.clickedCookie) + "</b> upgrade bought so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
@@ -288,7 +288,7 @@ var CheatSheet = {
         CheatSheet.autoBuyBuildings.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyBuildings.backPos.x + " " + CheatSheet.autoBuyBuildings.backPos.y + ";\"></div><div class=\"name\">Auto Buy Buildings [" + (CheatSheet.autoBuyBuildings.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Randomness is a thing, but you are better :)</div><div class=\"line\"></div><div class=\"data\">&bull; Are you a robot ?<br>&bull; <b>" + Beautify(CheatSheet.autoBuyBuildings.clickedCookie) + "</b> buildings buyed so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoBuyBuildings.backPos.x + " " + CheatSheet.autoBuyBuildings.backPos.y + ";\"></div><div class=\"name\">Auto Buy Buildings [" + (CheatSheet.autoBuyBuildings.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Randomness is a thing, but you are better :)</div><div class=\"line\"></div><div class=\"data\">&bull; Are you a robot ?<br>&bull; <b>" + Beautify(CheatSheet.autoBuyBuildings.clickedCookie) + "</b> buildings bought so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
