@@ -249,11 +249,23 @@ var CheatSheet = {
         x: "-528px",
         y: "-1056px"
       };
+      data.tick = 0;
+      data.waitTick = 1000; // 50 tick par second
       data.run = function() {
-        for (var i = Game.ObjectsById.length - 1; CheatSheet.autoBuyBuildings.active && i >= 0; i -= 1) { // Buy buildings
-          Game.ObjectsById[i].buy();
-          CheatSheet.autoBuyBuildings.clickedCookie += 1;
+        if (!CheatSheet.autoBuyBuildings.active) return;
+        data.tick += 1;
+        if (data.tick < data.waitTick)
+          return;
+        var buildingsBuyed = 0;
+        data.tick = 0;
+        for (var i = Game.ObjectsById.length - 1; i >= 0; i -= 1) {
+          while (Game.ObjectsById[i].price <= Game.cookies) {
+            buildingsBuyed += 1;
+            Game.ObjectsById[i].buy();
+            CheatSheet.autoBuyBuildings.clickedCookie += 1;
+          }
         }
+        new Game.Note(buildingsBuyed + " buildings buyed.", "", "", 1);
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
