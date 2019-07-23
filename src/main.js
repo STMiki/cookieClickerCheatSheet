@@ -256,16 +256,16 @@ var CheatSheet = {
         data.tick += 1;
         if (data.tick < data.waitTick)
           return;
-        var buildingsBuyed = 0;
+        var buildingsBought = 0;
         data.tick = 0;
         for (var i = Game.ObjectsById.length - 1; i >= 0; i -= 1) {
           while (Game.ObjectsById[i].price <= Game.cookies) {
-            buildingsBuyed += 1;
+            buildingsBought += 1;
             Game.ObjectsById[i].buy();
             CheatSheet.autoBuyBuildings.clickedCookie += 1;
           }
         }
-        new Game.Note(buildingsBuyed + " buildings buyed.", "", "", 1);
+        new Game.Note(buildingsBought + " buildings bought.", "", "", 3);
       };
       data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
       data.l.onmouseover = function() {
