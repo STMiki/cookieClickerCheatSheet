@@ -75,7 +75,7 @@ var CheatSheet = {
         CheatSheet.autoClicker.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClicker.backPos.x + " " + CheatSheet.autoClicker.backPos.y + ";\"></div><div class=\"name\">Autoclicker [" + (CheatSheet.autoClicker.active == 1 ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">A chinese man is behind every click. You realy need to thank him.</div><div class=\"line\"></div><div class=\"data\">&bull; This autoclicker has a rate of <b>1000</b> per second<br>&bull; It might be a little buggy sometimes so if something dosen't work, turn it off<br>&bull; <b>" + Beautify(CheatSheet.autoClicker.clickedCookie) + "</b> cookies clicked so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClicker.backPos.x + " " + CheatSheet.autoClicker.backPos.y + ";\"></div><div class=\"name\">Autoclicker [" + (CheatSheet.autoClicker.active == 1 ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">A chinese man is behind every click. You really need to thank him.</div><div class=\"line\"></div><div class=\"data\">&bull; This autoclicker has a rate of <b>1000</b> clicks per second<br>&bull; It might be a little buggy sometimes so if something doesn't work, turn it off<br>&bull; <b>" + Beautify(CheatSheet.autoClicker.clickedCookie) + "</b> cookies clicked so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
@@ -114,7 +114,7 @@ var CheatSheet = {
         CheatSheet.autoClickWrath.l.classList.toggle('enabled');
       };
       data.tooltip = function() {
-        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClickWrath.backPos.x + " " + CheatSheet.autoClickWrath.backPos.y + ";\"></div><div class=\"name\">Auto Click Wrath Cookie [" + (CheatSheet.autoClickWrath.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">The elders is sending you some present, but some people don't like them.</div><div class=\"line\"></div><div class=\"data\">&bull; Some elders does not like you, so be careful !<br>&bull; <b>" + Beautify(CheatSheet.autoClickWrath.clickedCookie) + "</b> wrath cookies clicked so far</div></div>");
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClickWrath.backPos.x + " " + CheatSheet.autoClickWrath.backPos.y + ";\"></div><div class=\"name\">Auto Click Wrath Cookie [" + (CheatSheet.autoClickWrath.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">The elders are sending you some present, but some people don't like them.</div><div class=\"line\"></div><div class=\"data\">&bull; Some elders does not like you, so be careful !<br>&bull; <b>" + Beautify(CheatSheet.autoClickWrath.clickedCookie) + "</b> wrath cookies clicked so far</div></div>");
       };
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
