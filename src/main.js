@@ -5,6 +5,8 @@ var CheatSheet = {
     this.elements.push(element);
   },
   RemoveCheatEngine: function() {
+    if (!CheatSheet.RegsiterElement.elements)
+      CheatSheet.RegsiterElement.elements = []
     CheatSheet.RegsiterElement.elements.forEach((element) => {
       document.getElementById(element).remove();
     });
@@ -158,6 +160,45 @@ var CheatSheet = {
       CheatSheet[data.id] = data;
       document.getElementById('cheatSheet').appendChild(data.l);
     }
+    if (document.getElementById('autoClickFortune') !== undefined) {
+      var data = {};
+      data.id = 'autoClickFortune';
+      data.backPos = {
+        x: "0px",
+        y: "-720px"
+      };
+      data.run = function() {
+        if (CheatSheet.autoClickFortune.active && Game.tickerL && Game.tickerL.children[0] && Game.tickerL.children[0].classList.contains('fortune')) {
+            Game.tickerL.children[0].click()
+          CheatSheet.autoClickFortune.clickedCookie += 1;
+        }
+      };
+      data.l = CheatSheet.CreateCheatElement(data.id, data.backPos.x + " " + data.backPos.y);
+      data.l.onmouseover = function() {
+        Game.setOnCrate(this);
+        Game.tooltip.dynamic = 1;
+        Game.tooltip.draw(this, function() {return (CheatSheet.autoClickFortune.tooltip());}, 'store');
+        Game.tooltip.wobble();
+      };
+      data.l.onmouseout = function() {
+        Game.setOnCrate(0);
+        Game.tooltip.shouldHide = 1;
+      };
+      data.l.onclick = function() {
+        CheatSheet.autoClickFortune.toggle();
+      };
+      data.active = 0;
+      data.clickedCookie = 0;
+      data.toggle = function() {
+        CheatSheet.autoClickFortune.active = !CheatSheet.autoClickFortune.active;
+        CheatSheet.autoClickFortune.l.classList.toggle('enabled');
+      };
+      data.tooltip = function() {
+        return ("<div style=\"min-width:350px;padding:8px;\"><div class=\"icon\" style=\"float:left;margin-left:-8px;margin-top:-8px;background-position: " + CheatSheet.autoClickFortune.backPos.x + " " + CheatSheet.autoClickFortune.backPos.y + ";\"></div><div class=\"name\">Auto Click Fortune Cookie [" + (CheatSheet.autoClickFortune.active ? "On" : "Off") + "]</div><div class=\"line\"></div><div class=\"description\">Your bank appreciate your donation, here is a fortune cookie for your next trade !</div><div class=\"line\"></div><div class=\"data\">&bull; Don't forget the 80% tax.<br>&bull; <b>" + Beautify(CheatSheet.autoClickFortune.clickedCookie) + "</b> fortune cookies clicked so far</div></div>");
+      };
+      CheatSheet[data.id] = data;
+      document.getElementById('cheatSheet').appendChild(data.l);
+    }
     if (document.getElementById('autoBuyTech')      !== undefined) {
       var data = {};
       data.id = 'autoBuyTech';
@@ -300,6 +341,7 @@ var CheatSheet = {
       CheatSheet.autoClickGolden.run(shimmer);
       CheatSheet.autoClickWrath.run(shimmer);
     });
+    CheatSheet.autoClickFortune.run();
     CheatSheet.autoBuyTech.run();
     CheatSheet.autoBuyUpgrade.run();
     CheatSheet.autoBuyBuildings.run();
