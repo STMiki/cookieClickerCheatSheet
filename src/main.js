@@ -50,9 +50,10 @@ var CheatSheet = {
         x: "-576px",
         y: "-912px"
       };
+      data.cookie = document.getElementById('bigCookie')
       data.run = function() {
         if (CheatSheet.autoClicker.active) {
-          document.getElementById('bigCookie').click();
+          data.cookie.click();
           CheatSheet.autoClicker.clickedCookie += Game.computedMouseCps;
         }
       };
