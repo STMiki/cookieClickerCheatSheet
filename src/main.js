@@ -1,17 +1,15 @@
 var CheatSheet = {
-  RegsiterElement: function(element) {
+  RegisterElement: function(element) {
     if (this.elements === undefined)
       this.elements = [];
     this.elements.push(element);
   },
   RemoveCheatEngine: function() {
-    if (!CheatSheet.RegsiterElement.elements)
-      CheatSheet.RegsiterElement.elements = []
-    CheatSheet.RegsiterElement.elements.forEach((element) => {
-      document.getElementById(element).remove();
-    });
-    Game.prompt("Goodbye", [":("]);
     clearInterval(CheatSheet.intervalLoop);
+    if (!Array.isArray(CheatSheet.elements))
+      CheatSheet.elements = []
+    CheatSheet.elements.forEach(element => document.getElementById(element).remove());
+    Game.Prompt("Goodbye", [":("]);
     delete CheatSheet;
   },
   CreateCheatElement: function(id, backPos) {
@@ -20,7 +18,6 @@ var CheatSheet = {
     data.classList.add('upgrade');
     data.style.backgroundPosition = backPos;
     data.id = id;
-    CheatSheet.RegsiterElement(id);
     return (data);
   },
   init: function() {
@@ -32,12 +29,12 @@ var CheatSheet = {
       };
       var style = document.createElement('style');
       style.id = "styleCheatSheet";
-      CheatSheet.RegsiterElement(style.id);
+      CheatSheet.RegisterElement(style.id);
       style.innerHTML = "#cheatSheet:before{content:'Cheat Sheet';};#cheatSheet{height: auto;min-height: 60px;}";
       document.getElementsByTagName('head')[0].appendChild(style);
       var data = document.createElement('div');
       data.id = "cheatSheet";
-      CheatSheet.RegsiterElement(data.id);
+      CheatSheet.RegisterElement(data.id);
       data.classList.add('storeSection');
       document.getElementById('store').insertBefore(data, document.getElementById('products'));
       CheatSheet.intervalLoop = setInterval(CheatSheet.loop, 1)
@@ -53,7 +50,7 @@ var CheatSheet = {
       data.cookie = document.getElementById('bigCookie')
       data.run = function() {
         if (CheatSheet.autoClicker.active) {
-          data.cookie.click();
+          CheatSheet['autoClicker'].cookie.click();
           CheatSheet.autoClicker.clickedCookie += Game.computedMouseCps;
         }
       };
